@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodieExpress - Online Food Ordering</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">🍔 FoodieExpress</div>
+        <ul class="nav-links">
+            <li><a href="#" onclick="showSection('home')">Home</a></li>
+            <li><a href="#" onclick="showSection('menu')">Order Foods</a></li>
+            <li><a href="#" onclick="showSection('cart')">Cart (<span id="cart-count">0</span>)</a></li>
+            <li><a href="#" onclick="showSection('special')">Special Menu</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="section active">
+        <div class="hero">
+            <h1>Delicious Food, Delivered To You</h1>
+            <p>Order your favorite meals with just a few clicks.</p>
+            <button class="btn-primary" onclick="showSection('menu')">Order Now</button>
+        </div>
+    </section>
+
+    <!-- Order Foods Section -->
+    <section id="menu" class="section">
+        <h2>Our Menu</h2>
+        <div id="food-container" class="food-grid">
+            <!-- Food items will be injected here by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Special Menu Section (Bonus Feature) -->
+    <section id="special" class="section">
+        <h2>🌟 Special Menu (Chef's Recommendations)</h2>
+        <div id="special-container" class="food-grid">
+            <!-- Special items injected by JS -->
+        </div>
+    </section>
+
+    <!-- Cart & Order Summary Section -->
+    <section id="cart" class="section">
+        <h2>Your Cart & Order Summary</h2>
+        <div id="cart-items">
+            <p>Your cart is empty.</p>
+        </div>
+        <div id="order-summary" class="hidden">
+            <h3>Order Summary</h3>
+            <p>Subtotal: $<span id="subtotal">0.00</span></p>
+            <p>Tax (10%): $<span id="tax">0.00</span></p>
+            <h3>Total Amount: $<span id="total-amount">0.00</span></h3>
+            <button class="btn-primary" onclick="showSection('payment')">Proceed to Payment</button>
+        </div>
+    </section>
+
+    <!-- Payment Gateway Simulation Section -->
+    <section id="payment" class="section">
+        <h2>Payment Gateway</h2>
+        <div class="payment-form">
+            <p>Total to Pay: <strong>$<span id="payment-total">0.00</span></strong></p>
+            <input type="text" placeholder="Card Number (Fake)" disabled>
+            <input type="text" placeholder="Expiry Date (MM/YY)" disabled>
+            <input type="text" placeholder="CVV" disabled>
+            <button class="btn-primary" id="place-order-btn" onclick="handlePlaceOrder()">Place Order</button>
+        </div>
+        <div id="processing-msg" class="hidden">
+            <div class="spinner"></div>
+            <p>Processing Order...</p>
+        </div>
+    </section>
+
+    <!-- Order Confirmation Section -->
+    <section id="confirmation" class="section">
+        <div class="confirmation-box">
+            <h2>✅ Order Confirmed!</h2>
+            <p>Thank you for your order.</p>
+            <p>Your Order ID is: <strong id="order-id"></strong></p>
+            <button class="btn-primary" onclick="resetApp()">Order More</button>
+        </div>
+    </section>
+
+    <!-- Food Details Modal -->
+    <div id="food-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <img id="modal-img" src="" alt="Food">
+            <h2 id="modal-name"></h2>
+            <p id="modal-desc"></p>
+            <p><strong>Price:</strong> $<span id="modal-price"></span></p>
+            <p><strong>Rating:</strong> <span id="modal-rating"></span> ⭐</p>
+            <button class="btn-primary" id="modal-add-btn">Add to Cart</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
